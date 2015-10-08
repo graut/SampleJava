@@ -202,7 +202,7 @@ public class DealAPI
      * @return {@link Deal}
      * @throws Exception
      */
-    public List<String> getDealByDealId1(String dealId) throws Exception
+    public List<String> getNoteIds(String dealId) throws Exception
     {
 	System.out.println("Getting deal by id ---------------------------");
 
