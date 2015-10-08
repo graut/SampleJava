@@ -27,60 +27,99 @@ public class Note
     @JsonProperty("contacts")
     private List<Contact> contacts;
 
-	public Long getId() {
-		return id;
-	}
+    @JsonProperty("deal_ids")
+    private List<String> deal_ids;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @JsonProperty("owner_id")
+    private String owner_id;
 
-	public Long getCreated_time() {
-		return created_time;
-	}
+    public Long getId()
+    {
+	return id;
+    }
 
-	public void setCreated_time(Long created_time) {
-		this.created_time = created_time;
-	}
+    public void setId(Long id)
+    {
+	this.id = id;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public Long getCreated_time()
+    {
+	return created_time;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public void setCreated_time(Long created_time)
+    {
+	this.created_time = created_time;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getSubject()
+    {
+	return subject;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setSubject(String subject)
+    {
+	this.subject = subject;
+    }
 
-	public List<String> getContact_ids() {
-		return contact_ids;
-	}
+    public String getDescription()
+    {
+	return description;
+    }
 
-	public void setContact_ids(List<String> contact_ids) {
-		this.contact_ids = contact_ids;
-	}
+    public void setDescription(String description)
+    {
+	this.description = description;
+    }
 
-	public List<Contact> getContacts() {
-		return contacts;
-	}
+    public List<String> getContact_ids()
+    {
+	return contact_ids;
+    }
 
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
-	}
+    public void setContact_ids(List<String> contact_ids)
+    {
+	this.contact_ids = contact_ids;
+    }
+
+    public List<Contact> getContacts()
+    {
+	return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts)
+    {
+	this.contacts = contacts;
+    }
+
+    public List<String> getDeal_ids()
+    {
+	return deal_ids;
+    }
+
+    public void setDeal_ids(List<String> deal_ids)
+    {
+	this.deal_ids = deal_ids;
+    }
+
+    public String getOwner_id()
+    {
+	return owner_id;
+    }
+
+    public void setOwner_id(String owner_id)
+    {
+	this.owner_id = owner_id;
+    }
 
 	@Override
 	public String toString() {
 		return "Note [id=" + id + ", created_time=" + created_time
 				+ ", subject=" + subject + ", description=" + description
-				+ ", contact_ids=" + contact_ids + "]";
+				+ ", contact_ids=" + contact_ids + ", contacts=" + contacts
+				+ ", deal_ids=" + deal_ids + ", owner_id=" + owner_id + "]";
 	}
 
-    
+
 }

@@ -19,5 +19,6 @@
 			<attribute name="owner.project.facets" value="com.google.appengine.facet"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

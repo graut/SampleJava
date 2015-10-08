@@ -80,7 +80,7 @@ public class APIManager {
 	public NoteAPI getNoteAPI() {
 		return new NoteAPI(resource);
 	}
-
+	
 	/**
 	 * Returns configured {@link WebResource}
 	 * 

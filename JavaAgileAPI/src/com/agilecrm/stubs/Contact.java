@@ -53,6 +53,12 @@ public class Contact
     @JsonProperty("domainUser")
     private JSONObject domainUser;
 
+    @JsonProperty("contact_company_id")
+    private String contact_company_id;
+
+    @JsonProperty("Owner")
+    private User Owner;
+
     public static enum Type
     {
 	PERSON, COMPANY
@@ -223,11 +229,30 @@ public class Contact
 	properties.add(contactField);
     }
 
-    @Override
+   
+    public String getContact_company_id()
+    {
+	return contact_company_id;
+    }
+
+    public void setContact_company_id(String contact_company_id)
+    {
+	this.contact_company_id = contact_company_id;
+    }
+
+	@Override
 	public String toString() {
 		return "Contact [id=" + id + ", count=" + count + ", owner_key="
-				+ owner_key + ", tags=" + tags + ", lead_score=" + lead_score
-				+ ", star_value=" + star_value + ", properties=" + properties.toString()
-				+ ", domainUser=" + domainUser + "]";
+				+ owner_key + ", widget_properties=" + widget_properties
+				+ ", type=" + type + ", tags=" + tags + ", lead_score="
+				+ lead_score + ", star_value=" + star_value + ", properties="
+				+ properties + ", created_time=" + created_time
+				+ ", updated_time=" + updated_time + ", tags_with_time_json="
+				+ tags_with_time_json + ", domainUser=" + domainUser
+				+ ", contact_company_id=" + contact_company_id + ", Owner="
+				+ Owner + "]";
 	}
+
+
+
 }

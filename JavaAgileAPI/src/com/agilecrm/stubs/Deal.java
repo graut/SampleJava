@@ -33,21 +33,29 @@ public class Deal
     @JsonProperty("created_time")
     private Long created_time;
 
-    @JsonProperty("contacts")
-    private List<Contact> contacts;
-
     @JsonProperty("contact_ids")
     private List<String> contact_ids;
-
-    @JsonProperty("owner")
-    private User owner;
 
     @JsonProperty("owner_id")
     private Long owner_id;
     
     @JsonProperty("pipeline_id")
     private Long pipeline_id;
-
+    
+    // Newly added field
+    
+    @JsonProperty("custom_data")
+    private List<CustomFieldData> custom_data;
+    
+    @JsonProperty("track")
+    private String track;
+    
+    @JsonProperty("deal_source_id")
+    private Long deal_source_id;
+    
+    @JsonProperty("notes")
+    private List<String> notes;
+    
     public Long getPipeline_id() {
 		return pipeline_id;
 	}
@@ -58,17 +66,6 @@ public class Deal
 
 	@JsonProperty("prefs")
     private String prefs;
-
-    public User getOwner()
-    {
-	return owner;
-    }
-
-    public void setOwner(User owner)
-    {
-	this.owner = owner;
-	this.owner_id = owner.getId();
-    }
 
     public Long getId()
     {
@@ -165,16 +162,6 @@ public class Deal
 	this.prefs = prefs;
     }
 
-    public void setContacts(List<Contact> contacts)
-    {
-	this.contacts = contacts;
-    }
-
-    public List<Contact> getContacts()
-    {
-	return contacts;
-    }
-
     public List<String> getContact_ids()
     {
 	return contact_ids;
@@ -185,9 +172,61 @@ public class Deal
 	this.contact_ids = contact_ids;
     }
 
-    public String toString()
-    {
-	return id + " " + name + " " + expected_value + " " + milestone + " "
-		+ created_time + " " + contact_ids +" " + pipeline_id;
-    }
+    
+    public List<CustomFieldData> getCustom_data() {
+		return custom_data;
+	}
+
+	public void setCustom_data(List<CustomFieldData> custom_data) {
+		this.custom_data = custom_data;
+	}
+
+	public String getTrack() {
+		return track;
+	}
+
+	public void setTrack(String track) {
+		this.track = track;
+	}
+
+	public Long getDeal_source_id() {
+		return deal_source_id;
+	}
+
+	public void setDeal_source_id(Long deal_source_id) {
+		this.deal_source_id = deal_source_id;
+	}
+
+
+	public void setOwner_id(Long owner_id) {
+		this.owner_id = owner_id;
+	}
+	
+
+
+	public List<String> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<String> notes) {
+		this.notes = notes;
+	}
+
+	@Override
+	public String toString() {
+		return "Deal [id=" + id + ", name=" + name + ", description="
+				+ description + ", expected_value=" + expected_value
+				+ ", milestone=" + milestone + ", probability=" + probability
+				+ ", close_date=" + close_date + ", created_time="
+				+ created_time + ", contact_ids=" + contact_ids + ", owner_id="
+				+ owner_id + ", pipeline_id=" + pipeline_id + ", custom_data="
+				+ custom_data + ", track=" + track + ", deal_source_id="
+				+ deal_source_id + ", notes=" + notes + ", prefs=" + prefs
+				+ "]";
+	}
+
+
+
+
+	
 }

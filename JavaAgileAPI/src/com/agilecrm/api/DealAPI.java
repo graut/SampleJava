@@ -1,13 +1,23 @@
 package com.agilecrm.api;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
+
+
+
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.agilecrm.stubs.Contact;
 import com.agilecrm.stubs.Deal;
 import com.agilecrm.stubs.DealCollection;
+import com.agilecrm.stubs.Note;
 import com.agilecrm.utils.StringUtils;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.GenericType;
@@ -183,6 +193,49 @@ public class DealAPI
 
 	return deal;
     }
+    
+    /**
+     * Retrieves the {@link Deal} from Agile CRM based on its Id
+     * 
+     * @param dealId
+     *            {@link String} id of the {@link Deal}
+     * @return {@link Deal}
+     * @throws Exception
+     */
+    public List<String> getDealByDealId1(String dealId) throws Exception
+    {
+	System.out.println("Getting deal by id ---------------------------");
+
+	if (StringUtils.isNullOrEmpty(new String[] { dealId }))
+	    throw new Exception("Please specify deal id to get the deal");
+
+	ClientResponse deal = resource.path("api/opportunity/" + dealId)
+		.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+	
+	String output = deal.getEntity(String.class);
+	
+	JSONObject root = new JSONObject(output);
+	JSONArray notesArray = root.getJSONArray("notes");
+	// now get the first element:
+	System.out.println(notesArray.length());
+	List<String> note_id = new ArrayList<String>();
+	for(int i=0;i<notesArray.length();i++){
+		JSONObject note = notesArray.getJSONObject(i);
+		String id = note.getString("id");
+		note_id.add(id);
+	}
+	
+	//JSONObject firstSport = notesArray.getJSONObject(0);
+	// and so on
+	//String name = firstSport.getString("id"); // basketball
+
+	//System.out.println(name);
+	
+	
+	
+
+	return note_id;
+    }
 
     /**
      * Updates the {@link Deal} with the given {@link Deal} object
@@ -195,8 +248,9 @@ public class DealAPI
     public Deal updateDeal(Deal deal)
     {
 	System.out.println("Updating deal --------------------------------");
+	System.out.println(deal);
 
-	deal = resource.path("/api/opportunity").put(Deal.class, deal);
+	deal = resource.path("/api/opportunity").accept(MediaType.APPLICATION_XML).put(Deal.class, deal);
 
 	return deal;
     }

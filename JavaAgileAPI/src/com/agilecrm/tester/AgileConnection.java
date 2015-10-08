@@ -23,7 +23,7 @@ public class AgileConnection
      */
     public static APIManager getConnection() throws Exception
     {
-	String baseUrl = "https://ghanshyam.agilecrm.com/dev";
+	String baseUrl = "https://ghanshyam-dot-sandbox-dot-agilecrmbeta.appspot.com/dev";
 	String userName = "ghanshyam.raut@agilecrm.com";
 	String apiKey = "123456";
 
